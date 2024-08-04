@@ -1,6 +1,6 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Root from './Root';
-import Callback from './Callback';
+import Callback from '../features/Callback';
 
 const appRouter = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root />}>
