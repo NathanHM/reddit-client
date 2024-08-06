@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard {
+    background-color: brown;
+    width: 70%;
+    color: white;
+    min-height: 800px;
+    border-radius: 50px;
+    padding: 1.5rem;
+}
