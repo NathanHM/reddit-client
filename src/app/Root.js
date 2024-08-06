@@ -1,19 +1,21 @@
 import './App.css';
 import LogIn from '../features/logIn/LogIn';
+import { Outlet } from 'react-router';
+import { selectAuthCode } from '../features/logIn/logInSlice';
+import { useSelector } from 'react-redux';
 
 function Root() {
-  const getData = async () => {
-    const data = await fetch('https://www.reddit.com/r/MarvelStudiosSpoilers.json');
-    const json = await data.json();
-    console.log(json.data.children)
-  }
+
+  const authCode = useSelector(selectAuthCode);
+  console.log(authCode)
 
   return (
     <>
       <div className="App">
-        <button onClick={getData}>Click</button>
         <LogIn />
       </div>
+      <p>{authCode}</p>
+      <Outlet />
     </>
 
   );
