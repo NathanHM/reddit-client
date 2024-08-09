@@ -11,14 +11,10 @@ export default function Callback() {
     const [reload, setReload] = useState(<></>);
 
     useEffect(() => {
-        console.log('hey1')
-        console.log(id)
-        console.log(window.location.href)
-        console.assert(window.location.href.includes(id));
         if (window.location.href.includes(id)) {
             console.log('hey2')
             dispatch(setAuthCode(window.location.href.slice(79)));
-            setReload(<Navigate to='/' />)
+            setReload(<Navigate to='/dashboard' />)
         }
     }, [id, dispatch])
 
