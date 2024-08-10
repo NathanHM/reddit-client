@@ -4,6 +4,11 @@
     justify-content: center;
 }
 
+.sortButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
 .dashboard {
     background-color: brown;
     width: 70%;
