@@ -12,7 +12,6 @@ export default function Callback() {
 
     useEffect(() => {
         if (window.location.href.includes(id)) {
-            console.log('hey2')
             dispatch(setAuthCode(window.location.href.slice(79)));
             setReload(<Navigate to='/dashboard' />)
         }

@@ -11,7 +11,8 @@ export default function Dashboard() {
         'MarvelStudiosSpoilers',
         'marvelstudios',
         'dccomics',
-        'comicbooks'
+        'comicbooks',
+        'masseffect'
     ]
 
 
@@ -64,7 +65,6 @@ export default function Dashboard() {
         posts.sort((a, b) => b.data.score - a.data.score);
 
         for (const post of posts) {
-            console.log(post)
             if (!post.data.pinned) {
                 dispatch(addPost({ data: post.data, key: uuidv4() }))
             }

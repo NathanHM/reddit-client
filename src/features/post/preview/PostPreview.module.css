@@ -22,3 +22,8 @@
 .points {
     width: 15%;
 }
+
+.link {
+    color: white;
+    text-decoration: none;
+}

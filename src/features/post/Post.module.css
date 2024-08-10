@@ -1,0 +1,58 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.dashboard {
+    background-color: brown;
+    width: 70%;
+    color: white;
+    min-height: 800px;
+    border-radius: 50px;
+    padding: 1.5rem;
+    text-overflow: clip;
+}
+
+.section {
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gallery {
+    display: block;
+}
+
+.imageContainer {
+    display: flex;
+    max-width: 100%;
+    height: auto;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: 1px solid white;
+}
+
+.img {
+    width: 100%;
+}
+
+.videoContainer {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+}
+
+.videoContainer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
