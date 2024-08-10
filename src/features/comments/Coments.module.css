@@ -16,7 +16,8 @@
     display: block;
     border-left: 2px solid white;
     margin-left: 2px;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 2px 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 0px;
 }
