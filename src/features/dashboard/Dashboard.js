@@ -11,7 +11,13 @@ export default function Dashboard() {
         'MarvelStudiosSpoilers',
         'marvelstudios',
         'dccomics',
+        'DC_Cinematic',
         'comicbooks',
+        'Invincible',
+        'Dimension20',
+        'NotAnotherDnDPodcast',
+        'Gallifrey',
+        'Community',
         'masseffect'
     ]
 
@@ -96,7 +102,7 @@ export default function Dashboard() {
             <div className={styles.dashboard}>
                 <h1 className={styles.container}>Dashboard</h1>
                 <button className={styles.container} onClick={refresh} >Refresh</button>
-                {postPreviews.map(post => <PostPreview data={post.data} key={post.key} />)}
+                {postPreviews.slice(0, 50).map(post => <PostPreview data={post.data} key={post.key} />)}
             </div>
         </div>
     )

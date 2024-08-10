@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import jQuery from 'jquery';
 import styles from './Post.module.css'
-import { v4 as uuidv4 } from "uuid";
+import Image from "./types/Image";
+import Video from './types/Video';
+import Text from "./types/Text";
+import Gallery from './types/Gallery';
+import RichVideo from "./types/RichVideo";
 
 
 export default function Post() {
@@ -18,7 +22,7 @@ export default function Post() {
             });
             const json = await data.json();
 
-            setPost(json['0'].data.children)
+            setPost(json['0'].data.children[0].data)
             setComments(json['1'].data.children)
 
         }
@@ -35,121 +39,36 @@ export default function Post() {
         )
     }
 
-    console.log(post[0].data)
+    console.log(post)
 
-    if (post[0].data.post_hint === 'image') {
+    if (post.post_hint === 'image') {
         return (
-            <div className={styles.container}>
-                <div className={styles.dashboard}>
-
-                    <h1 className={styles.container} >{post[0].data.title}</h1>
-                    <h2 className={styles.container} >Posted at: {Date(post[0].data.created * 1000).toLocaleString()}</h2>
-                    <h2 className={styles.container} >Posted by: {post[0].data.author}</h2>
-
-                    <div className={styles.container}>
-                        <div className={styles.gallery} >
-
-                            <div className={styles.imageContainer} >
-                                <img className={styles.img} src={post[0].data.preview.images[0].source.url.replace('preview', 'i')} alt="" key={uuidv4()} />
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+            <Image data={post} />
         )
     }
 
     if (post[0].data.is_video) {
 
         return (
-            <div className={styles.container}>
-                <div className={styles.dashboard}>
-
-                    <h1 className={styles.container} >{post[0].data.title}</h1>
-                    <h2 className={styles.container} >Posted at: {Date(post[0].data.created * 1000).toLocaleString()}</h2>
-                    <h2 className={styles.container} >Posted by: {post[0].data.author}</h2>
-                    
-                    <div className={styles.container}>
-                        <div className={styles.videoContainer}>
-                            <iframe src={post[0].data.media.reddit_video.fallback_url} title={post[0].data.title} width='100%' height='100%' />
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+            <Video data={post} />
         )
     }
 
     if (post[0].data.post_hint === 'rich:video') {
 
-        const regex = /src="([^"]+)"/;
-        const match = post[0].data.secure_media.oembed.html.match(regex);
-        const url = match[1];
-
         return (
-            <div className={styles.container}>
-                <div className={styles.dashboard}>
-
-                    <h1 className={styles.container} >{post[0].data.title}</h1>
-                    <h2 className={styles.container} >Posted at: {Date(post[0].data.created * 1000).toLocaleString()}</h2>
-                    <h2 className={styles.container} >Posted by: {post[0].data.author}</h2>
-
-                    <div className={styles.container}>
-                        <div className={styles.videoContainer}>
-                            <iframe src={url} title={post[0].data.secure_media.oembed.title} width='100%' height='100%' />
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+            <RichVideo data={post} />
         )
     }
 
     if (post[0].data.is_gallery) {
         return (
-            <div className={styles.container}>
-                <div className={styles.dashboard}>
-
-                    <h1 className={styles.container} >{post[0].data.title}</h1>
-                    <h2 className={styles.container} >Posted at: {Date(post[0].data.created * 1000).toLocaleString()}</h2>
-                    <h2 className={styles.container} >Posted by: {post[0].data.author}</h2>
-
-                    <div className={styles.container}>
-                        <div className={styles.gallery} >
-                            {Object.values(post[0].data.media_metadata).map(
-                                image =>
-                                    <div className={styles.imageContainer} >
-                                        <img className={styles.img} src={image.s.u.replace('preview', 'i')} alt="" key={uuidv4()} />
-                                    </div>
-                            )}
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+            <Gallery data={post} />
         )
     }
 
     return (
-        <>
-            <div className={styles.container}>
-                <div className={styles.dashboard}>
-
-                    <h1 className={styles.container} >{post[0].data.title}</h1>
-                    <h2 className={styles.container} >Posted at: {Date(post[0].data.created * 1000)}</h2>
-                    <h2 className={styles.container} >Posted by: {post[0].data.author}</h2>
-
-                    <p>{post[0].data.selftext}</p>
-
-                </div>
-            </div>
-        </>
+        <Text data={post} />
     )
 
 }
