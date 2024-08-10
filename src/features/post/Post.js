@@ -6,7 +6,8 @@ import Image from "./types/Image";
 import Video from './types/Video';
 import Text from "./types/Text";
 import Gallery from './types/Gallery';
-import RichVideo from "./types/RichVideo";
+import RichVideo from "./types/RichVideo.js";
+import Comment from '../comments/Comment.js';
 
 
 export default function Post() {
@@ -14,6 +15,7 @@ export default function Post() {
 
     const [post, setPost] = useState({});
     const [comments, setComments] = useState({});
+    const [type, setType] = useState(<></>);
 
     useEffect(() => {
         const fetchPostData = async () => {
@@ -29,6 +31,24 @@ export default function Post() {
         fetchPostData()
     }, [subreddit, id])
 
+    useEffect(() => {
+        if (post.post_hint === 'image') {
+            setType(< Image data={post} />)
+        }
+        else if (post.post_hint === 'rich:video') {
+            setType(<RichVideo data={post} />)
+        }
+        else if (post.is_video) {
+            setType(<Video data={post} />)
+        }
+        else if (post.is_gallery) {
+            setType(<Gallery data={post} />)
+        }
+        else {
+            setType(<Text data={post} />)
+        }
+    }, [post])
+
     if (jQuery.isEmptyObject(post)) {
         return (
             <div className={styles.container}>
@@ -39,36 +59,19 @@ export default function Post() {
         )
     }
 
-    console.log(comments)
-
-    if (post.post_hint === 'image') {
-        return (
-            <Image data={post} />
-        )
-    }
-
-    if (post.post_hint === 'rich:video') {
-
-        return (
-            <RichVideo data={post} />
-        )
-    }
-
-    if (post.is_video) {
-
-        return (
-            <Video data={post} />
-        )
-    }
-
-    if (post.is_gallery) {
-        return (
-            <Gallery data={post} />
-        )
-    }
-
     return (
-        <Text data={post} />
-    )
+        <div className={styles.container}>
+            <div className={styles.dashboard}>
 
+                <h1 className={styles.container} >{post.title}</h1>
+                <h2 className={styles.container} >Posted at: {Date(post.created * 1000).toLocaleString()}</h2>
+                <h2 className={styles.container} >Posted by: {post.author}</h2>
+
+                {type}
+
+                {Object.values(comments).map(comment => <Comment data={comment} key={comment.data.id} />)}
+
+            </div>
+        </div>
+    )
 }
