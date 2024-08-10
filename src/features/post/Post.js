@@ -39,7 +39,7 @@ export default function Post() {
         )
     }
 
-    console.log(post)
+    console.log(comments)
 
     if (post.post_hint === 'image') {
         return (
@@ -47,21 +47,21 @@ export default function Post() {
         )
     }
 
-    if (post[0].data.is_video) {
-
-        return (
-            <Video data={post} />
-        )
-    }
-
-    if (post[0].data.post_hint === 'rich:video') {
+    if (post.post_hint === 'rich:video') {
 
         return (
             <RichVideo data={post} />
         )
     }
 
-    if (post[0].data.is_gallery) {
+    if (post.is_video) {
+
+        return (
+            <Video data={post} />
+        )
+    }
+
+    if (post.is_gallery) {
         return (
             <Gallery data={post} />
         )
