@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import styles from './PostPreview.module.css';
-import { Navigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 export default function PostPreview({ data }) {
@@ -8,7 +6,7 @@ export default function PostPreview({ data }) {
     const author = data.author;
     const title = data.title;
     const subreddit = data.subreddit;
-    const permalink = data.permalink;
+    //const permalink = data.permalink;
     const id = data.id;
     const upvotes = data.ups;
     const time = data.created_utc
