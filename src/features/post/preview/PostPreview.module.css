@@ -12,6 +12,10 @@
     border-radius: 1.5rem;
 }
 
+.details {
+    width: 90%;
+}
+
 .section {
     display: flex;
     justify-content: space-around;
@@ -19,11 +23,94 @@
     text-overflow: ellipsis;
 }
 
-.points {
-    width: 15%;
-}
-
 .link {
     color: white;
     text-decoration: none;
+}
+
+.points {
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.pointsContainer {
+    min-width: 10%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.points button {
+    background-color: transparent;
+    max-width: 40px;
+    border-radius: 25px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.points p {
+    max-width: 40px;
+}
+
+.points button:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.points button:active {
+    box-shadow: 0 0 10px 5px rgb(255, 255, 255);
+    background-color: none;
+}
+
+.points button:disabled {
+    background-color: rgb(236, 126, 0);
+}
+
+.points img {
+    height: 40px;
+    filter: invert(100%);
+    width: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+.points img:active {
+    filter: none;
+}
+
+h1 {
+    font-size: 1.4rem;
+}
+
+h2, p {
+    font-size: 1rem;
+    margin: none;
+    padding: none;
+}
+
+h3 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    padding-left: 0.4rem;
+}
+
+.bar img {
+    height: 25px;
+    filter: invert(100%);
+}
+
+.bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.commentsSection {
+    display: flex;
 }

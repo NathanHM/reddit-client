@@ -11,9 +11,11 @@
 
 .dashboard {
     background-color: brown;
-    width: 70%;
+    width: 80%;
+    max-width: 1000px;
     color: white;
     min-height: 800px;
     border-radius: 50px;
     padding: 1.5rem;
+    margin: 2rem 0;
 }

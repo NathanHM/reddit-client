@@ -3,10 +3,12 @@ import LogIn from '../features/logIn/LogIn';
 import { Outlet, useNavigate } from 'react-router';
 import { selectLoggedIn } from '../features/logIn/logInSlice';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { clearPosts } from "../features/dashboard/dashboardSlice";
 import { setId, setAuthCode, setLoggedIn } from "../features/logIn/logInSlice";
+import homeIcon from '../imgs/home.png';
+import refreshIcon from '../imgs/refresh.png';
+import logOutIcon from '../imgs/exit.png';
 
 function Root() {
 
@@ -39,13 +41,13 @@ function Root() {
           <nav>
             <ul>
               <li>
-                <button onClick={home}>Home</button>
+                <button onClick={home}><img src={homeIcon} alt='home' ></img></button>
               </li>
               <li>
-                <button onClick={refresh}>Refresh</button>
+                <button onClick={refresh}><img src={refreshIcon} alt='refresh' ></img></button>
               </li>
               <li>
-                <button onClick={handleLogOut}>Log Out</button>
+                <button onClick={handleLogOut}><img src={logOutIcon} alt='log-out' ></img></button>
               </li>
             </ul>
           </nav>
