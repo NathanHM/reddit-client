@@ -18,8 +18,8 @@ export default function PostPreview({ data }) {
     const time = data.created_utc
     const date = new Date(time * 1000)
     const link = data.post_hint === 'link'
-    const domain = data.domain;
-    const flair = data.link_flair_text;
+    //const domain = data.domain;
+    //const flair = data.link_flair_text;
     const num_comments = data.num_comments
 
     const upvoted = useSelector(selectUpvoted(id));
