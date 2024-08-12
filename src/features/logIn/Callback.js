@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectId, setAuthCode } from './logIn/logInSlice';
+import { selectId, setAuthCode, setLoggedIn } from './logInSlice';
 
 export default function Callback() {
 
@@ -13,7 +13,10 @@ export default function Callback() {
     useEffect(() => {
         if (window.location.href.includes(id)) {
             dispatch(setAuthCode(window.location.href.slice(79)));
-            setReload(<Navigate to='/dashboard' />)
+            dispatch(setLoggedIn(true));
+            setReload(<Navigate to='/dashboard' />);
+        } else {
+            setReload(<Navigate to='/' />);
         }
     }, [id, dispatch])
 

@@ -2,7 +2,7 @@ import PostPreview from "../post/preview/PostPreview";
 import { v4 as uuidv4 } from "uuid";
 import styles from './Dashboard.module.css';
 import { useSelector, useDispatch } from "react-redux";
-import { addPost, selectPosts, clearPosts } from "./dashboard.slice";
+import { addPost, selectPosts } from "./dashboardSlice";
 import { useEffect } from "react";
 
 export default function Dashboard() {
@@ -93,15 +93,12 @@ export default function Dashboard() {
         )
     }
 
-    const refresh = () => {
-        dispatch(clearPosts());
-    }
+
 
     return (
         <div className={styles.container}>
             <div className={styles.dashboard}>
                 <h1 className={styles.container}>Dashboard</h1>
-                <button className={styles.container} onClick={refresh} >Refresh</button>
                 {postPreviews.slice(0, 50).map(post => <PostPreview data={post.data} key={post.key} />)}
             </div>
         </div>

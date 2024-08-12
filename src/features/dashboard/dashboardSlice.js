@@ -15,6 +15,6 @@ export const dashboardSlice = createSlice({
     }
 })
 
-export const selectPosts = (state) => state.dashboard.posts;
+export const selectPosts = (state) => state.root.dashboard.posts;
 export const { addPost, clearPosts } = dashboardSlice.actions;
 export default dashboardSlice.reducer;

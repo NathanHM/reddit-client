@@ -1,6 +1,6 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Root from './Root';
-import Callback from '../features/Callback';
+import Callback from '../features/logIn/Callback';
 import Dashboard from '../features/dashboard/Dashboard';
 import Post from '../features/post/Post';
 
