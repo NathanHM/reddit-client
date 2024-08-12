@@ -6,6 +6,8 @@ import permalinkIcon from '../../../imgs/arrow-up-right-from-square.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDownvoted, selectUpvoted, setDownvoted, setUpvoted } from '../../dashboard/dashboardSlice.js';
+import thumbnailDefault from '../../../imgs/text.png'
+import spoilerIcon from '../../../imgs/exclamation.png'
 
 export default function PostPreview({ data }) {
 
@@ -18,13 +20,22 @@ export default function PostPreview({ data }) {
     const time = data.created_utc
     const date = new Date(time * 1000)
     const link = data.post_hint === 'link'
-    //const domain = data.domain;
-    //const flair = data.link_flair_text;
+    const domain = data.domain;
+    const flair = data.link_flair_text;
     const num_comments = data.num_comments
+    let thumbnail = <></>
 
     const upvoted = useSelector(selectUpvoted(id));
     const downvoted = useSelector(selectDownvoted(id))
     const dispatch = useDispatch();
+
+    if (data.thumbnail === 'self') {
+        thumbnail = <img src={thumbnailDefault} alt='self-post' id={styles.icon} ></img>
+    } else if (data.thumbnail === 'spoiler') {
+        thumbnail = <img src={spoilerIcon} alt='spoiler' id={styles.icon} ></img>
+    } else {
+        thumbnail = <img src={data.thumbnail} alt='thumbnail' ></img>
+    }
 
     const postData = {
         subreddit, id
@@ -40,6 +51,8 @@ export default function PostPreview({ data }) {
         dispatch(setDownvoted({ bool: true, id: id }));
     }
 
+    console.log(data)
+
     return (
         <div className={styles.post}>
             <div className={styles.pointsContainer} >
@@ -54,8 +67,19 @@ export default function PostPreview({ data }) {
                 </div>
             </div>
 
+            <div className={styles.thumbnail}>
+                <div className={styles.imgContainer}>
+                    {thumbnail}
+                </div>
+            </div>
+
 
             <div className={styles.details} >
+                <div className={styles.spaceBetween}>
+                    <h4>{domain}</h4>
+                    <h4>{flair}</h4>
+                </div>
+
 
                 {link ?
                     <Link
@@ -64,7 +88,7 @@ export default function PostPreview({ data }) {
                         target='_blank'
                         className={styles.link}
                     >
-                        <h1 className={styles.container}>{title}</h1>
+                        <h1>{title}</h1>
                     </Link>
                     :
                     <Link
@@ -73,7 +97,7 @@ export default function PostPreview({ data }) {
                         data={postData}
                         className={styles.link}
                     >
-                        <h1 className={styles.container}>{title}</h1>
+                        <h1>{title}</h1>
                     </Link>
                 }
 
@@ -86,10 +110,21 @@ export default function PostPreview({ data }) {
                 <div className={styles.section} >
                     <div className={styles.bar} >
                         <div className={styles.commentsSection}>
-                            <img src={commentIcon} alt='comment' />
-                            <h3>
-                                {num_comments}
-                            </h3>
+                            <Link
+                                key={id}
+                                to={`/${subreddit}/${id}`}
+                                data={postData}
+                                className={styles.link}
+                            >
+                                <div className={styles.section} >
+                                    <img src={commentIcon} alt='comment' />
+                                    <h3>
+                                        {num_comments}
+                                    </h3>
+                                </div>
+
+                            </Link>
+
                         </div>
 
                         <a href={'https://old.reddit.com' + permalink} target='_blank' rel="noreferrer"> <img src={permalinkIcon} alt='permalink' /> </a>

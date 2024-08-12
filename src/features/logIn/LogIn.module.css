@@ -1,29 +1,29 @@
 nav {
-    background-color: brown;
-    margin-top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
+  background-color: rgb(63, 14, 171);
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
-  nav a {
-    background-color: transparent;
-    padding: 0px;
-    border: none;
-    transition: 0.1s;
-  }
-  
-  nav a:hover {
-    filter: invert(50%);
-  }
-  
-  nav a:active {
-    filter: invert(100%);
-  }
-  
-  nav a img {
-    filter: invert(100%);
-    width: 40px;
-    height: 40px;
-  }
+nav a {
+  background-color: transparent;
+  padding: 0px;
+  border: none;
+  transition: 0.1s;
+}
+
+nav a:hover {
+  filter: invert(50%);
+}
+
+nav a:active {
+  filter: invert(100%);
+}
+
+nav a img {
+  filter: invert(100%);
+  width: 40px;
+  height: 40px;
+}

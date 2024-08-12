@@ -2,18 +2,47 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 0px;
 }
 
 .post {
-    background-color: blue;
+    background-color: rgb(65, 65, 65);
     display: flex;
+    margin: 0rem 0.5rem;
     padding: 1rem;
-    margin: 1rem;
-    border-radius: 1.5rem;
+    border-top: 1px solid rgb(111, 0, 190);
+    border-bottom: 1px solid rgb(111, 0, 190);
 }
 
+.spaceBetween {
+    display: flex;
+    justify-content: space-between;
+}
+
+.thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    padding: 0px 0.5rem;
+}
+
+.thumbnail .imgContainer {
+    width: 100%;
+    height: auto;
+}
+
+.thumbnail .imgContainer img {
+    width: 100%;
+}
+
+.thumbnail .imgContainer #icon {
+    filter: invert(100%);
+}
+
+
 .details {
-    width: 90%;
+    width: 85%;
 }
 
 .section {
@@ -36,7 +65,7 @@
 }
 
 .pointsContainer {
-    min-width: 10%;
+    min-width: 5%;
     display: flex;
     margin: 0;
     padding: 0;
