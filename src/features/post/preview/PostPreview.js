@@ -33,8 +33,16 @@ export default function PostPreview({ data }) {
         thumbnail = <img src={thumbnailDefault} alt='self-post' id={styles.icon} ></img>
     } else if (data.thumbnail === 'spoiler') {
         thumbnail = <img src={spoilerIcon} alt='spoiler' id={styles.icon} ></img>
+    } else if (data.thumbnail === 'nsfw') {
+        thumbnail = <img src={spoilerIcon} alt='nsfw' id={styles.icon} ></img>
     } else {
-        thumbnail = <img src={data.thumbnail} alt='thumbnail' ></img>
+        if (data.thumbnail.includes('external-preview')) {
+            thumbnail = <img src={data.thumbnail.replace('external-preview', 'i')} alt='thumbnail' ></img>
+        } else if (data.thumbnail.includes('preview')) {
+            thumbnail = <img src={data.thumbnail.replace('preview', 'i')} alt='thumbnail' ></img>
+        } else {
+            thumbnail = <img src={data.thumbnail} alt='thumbnail' ></img>
+        }
     }
 
     const postData = {
@@ -77,7 +85,7 @@ export default function PostPreview({ data }) {
             <div className={styles.details} >
                 <div className={styles.spaceBetween}>
                     <h4>{domain}</h4>
-                    <h4>{flair}</h4>
+                    <h4>{subreddit} : {flair}</h4>
                 </div>
 
 
@@ -105,7 +113,6 @@ export default function PostPreview({ data }) {
                 <div className={styles.section} >
                     <h2>{author}</h2>
                     <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
-                    <h2>{subreddit}</h2>
                 </div>
                 <div className={styles.section} >
                     <div className={styles.bar} >

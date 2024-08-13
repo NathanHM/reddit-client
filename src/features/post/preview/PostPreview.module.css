@@ -9,7 +9,7 @@
     background-color: rgb(65, 65, 65);
     display: flex;
     margin: 0rem 0.5rem;
-    padding: 1rem;
+    padding: 1rem 0.25rem;
     border-top: 1px solid rgb(111, 0, 190);
     border-bottom: 1px solid rgb(111, 0, 190);
 }
@@ -24,7 +24,8 @@
     justify-content: center;
     align-items: center;
     width: 10%;
-    padding: 0px 0.5rem;
+    min-width: 80px;
+    padding: 2%;
 }
 
 .thumbnail .imgContainer {
@@ -47,7 +48,7 @@
 
 .section {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -65,7 +66,7 @@
 }
 
 .pointsContainer {
-    min-width: 5%;
+    max-width: 50px;
     display: flex;
     margin: 0;
     padding: 0;
