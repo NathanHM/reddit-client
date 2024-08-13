@@ -15,25 +15,21 @@ export default function Comment({ data }) {
         return (
             <div>
                 <div className={styles.comment} >
-
                     <div className={styles.commentContainer}>
 
                         <Vote data={data.data} kind={data.kind} />
 
                         <div className={styles.details}>
+
                             <h1><a href={'https://old.reddit.com/u/' + author} target='_blank' rel="noreferrer">{author}</a></h1>
                             <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
 
                             <div className={styles.commentContent}>
                                 <p>{data.data.body}</p>
                             </div>
+
                         </div>
-
-
                     </div>
-
-
-
 
                     {Object.values(data.data.replies.data.children).map(child => <Comment data={child} key={uuidv4()} />)}
 
@@ -46,7 +42,6 @@ export default function Comment({ data }) {
 
     return (
         <div className={styles.comment} >
-
             <div className={styles.commentContainer}>
 
                 <Vote data={data.data} kind={data.kind} />
@@ -59,11 +54,9 @@ export default function Comment({ data }) {
                     <div className={styles.commentContent}>
                         <p>{data.data.body}</p>
                     </div>
+
                 </div>
-
-
             </div>
-
         </div>
     )
 

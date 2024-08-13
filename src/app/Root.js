@@ -2,7 +2,7 @@ import './App.css';
 import LogIn from '../features/logIn/LogIn';
 import { Outlet, useNavigate } from 'react-router';
 import { selectLoggedIn, setId, setAuthCode, setLoggedIn } from '../features/logIn/logInSlice';
-import { useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import { clearPosts } from "../features/dashboard/dashboardSlice";
 import homeIcon from '../imgs/home.png';
@@ -35,9 +35,8 @@ function Root() {
   return (
     <>
       <div className="App">
-
-        {loggedIn ?
-          <nav>
+        <nav>
+          {loggedIn ?
             <ul>
               <li>
                 <button onClick={home}><img src={homeIcon} alt='home' ></img></button>
@@ -49,15 +48,13 @@ function Root() {
                 <button onClick={handleLogOut}><img src={logOutIcon} alt='log-out' ></img></button>
               </li>
             </ul>
-          </nav>
-          :
-          <LogIn />
-        }
-
+            :
+            <LogIn />
+          }
+        </nav>
       </div>
       <Outlet />
     </>
-
   );
 
 
