@@ -1,13 +1,11 @@
 import styles from './PostPreview.module.css';
-import upvoteIcon from '../../../imgs/arrow-alt-circle-up.png'
-import downvoteIcon from '../../../imgs/arrow-alt-circle-down.png'
+import subStyles from '../SubStyles.module.css';
 import commentIcon from '../../../imgs/comment-alt-middle.png'
 import permalinkIcon from '../../../imgs/arrow-up-right-from-square.png'
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectDownvoted, selectUpvoted, setDownvoted, setUpvoted } from '../../dashboard/dashboardSlice.js';
 import thumbnailDefault from '../../../imgs/text.png'
 import spoilerIcon from '../../../imgs/exclamation.png'
+import Vote from '../../vote/Vote.js';
 
 export default function PostPreview({ data }) {
 
@@ -16,7 +14,6 @@ export default function PostPreview({ data }) {
     const subreddit = data.subreddit;
     const permalink = data.permalink;
     const id = data.id;
-    const upvotes = data.ups;
     const time = data.created_utc
     const date = new Date(time * 1000)
     const link = data.post_hint === 'link'
@@ -25,11 +22,8 @@ export default function PostPreview({ data }) {
     const num_comments = data.num_comments
     let thumbnail = <></>
 
-    const upvoted = useSelector(selectUpvoted(id));
-    const downvoted = useSelector(selectDownvoted(id))
-    const dispatch = useDispatch();
 
-    if (data.thumbnail === 'self') {
+    if (data.thumbnail === 'self' || data.thumbnail === '') {
         thumbnail = <img src={thumbnailDefault} alt='self-post' id={styles.icon} ></img>
     } else if (data.thumbnail === 'spoiler') {
         thumbnail = <img src={spoilerIcon} alt='spoiler' id={styles.icon} ></img>
@@ -49,31 +43,12 @@ export default function PostPreview({ data }) {
         subreddit, id
     }
 
-    const handleUpvote = () => {
-        dispatch(setUpvoted({ bool: true, id: id }));
-        dispatch(setDownvoted({ bool: false, id: id }));
-    }
-
-    const handleDownvote = () => {
-        dispatch(setUpvoted({ bool: false, id: id }));
-        dispatch(setDownvoted({ bool: true, id: id }));
-    }
-
     console.log(data)
 
     return (
         <div className={styles.post}>
-            <div className={styles.pointsContainer} >
-                <div className={styles.points} >
-                    <button className={styles.container} onClick={handleUpvote} disabled={upvoted}>
-                        <img src={upvoteIcon} alt='upvote' />
-                    </button>
-                    <p className={styles.container}>{upvotes}</p>
-                    <button className={styles.container} onClick={handleDownvote} disabled={downvoted}>
-                        <img src={downvoteIcon} alt='downvote' />
-                    </button>
-                </div>
-            </div>
+
+            <Vote data={data} />
 
             <div className={styles.thumbnail}>
                 <div className={styles.imgContainer}>
@@ -85,7 +60,7 @@ export default function PostPreview({ data }) {
             <div className={styles.details} >
                 <div className={styles.spaceBetween}>
                     <h4>{domain}</h4>
-                    <h4>{subreddit} : {flair}</h4>
+                    <h4 className={subStyles[subreddit]}>{subreddit} : {flair}</h4>
                 </div>
 
 
@@ -111,7 +86,7 @@ export default function PostPreview({ data }) {
 
 
                 <div className={styles.section} >
-                    <h2>{author}</h2>
+                <h2><a href={'https://old.reddit.com/u/' + author} target='_blank' rel="noreferrer">{author}</a></h2>
                     <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
                 </div>
                 <div className={styles.section} >
@@ -125,9 +100,9 @@ export default function PostPreview({ data }) {
                             >
                                 <div className={styles.section} >
                                     <img src={commentIcon} alt='comment' />
-                                    <h3>
+                                    <h4>
                                         {num_comments}
-                                    </h3>
+                                    </h4>
                                 </div>
 
                             </Link>

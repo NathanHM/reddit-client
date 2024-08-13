@@ -4,4 +4,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Reddit Client
 
-An app designed to pull in posts from all the subreddits I frequent, allowing me to see all the information in one place, with a consistent style desiugned by me. Also allow me to leave comments.
+An app designed to pull in posts from all the subreddits I frequent, allowing me to see all the information in one place, with a consistent style desiugned by me. Created as part of the Codecademy Full-Stack Engineer path.

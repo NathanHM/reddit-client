@@ -6,8 +6,6 @@ export default function Comment({ data }) {
         return;
     }
 
-    console.log(data.data)
-
     if (data.data.replies !== '') {
         return (
             <div className={styles.comment} >

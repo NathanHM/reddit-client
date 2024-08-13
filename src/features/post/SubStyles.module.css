@@ -1,0 +1,76 @@
+.community {
+    color: blue;
+    background-color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.masseffect {
+    color: white;
+    background-color: rgb(150, 0, 0);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.marvelstudios {
+    color: white;
+    background-color: rgb(255, 0, 0);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.MarvelStudiosSpoilers {
+    color: white;
+    background-color: rgb(101, 41, 212);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.dccomics {
+    color: white;
+    background-color: rgb(1, 103, 255);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.DC_Cinematic {
+    color: white;
+    background-color: rgb(21, 67, 122);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.comicbooks {
+    color: white;
+    background-color: rgb(224, 168, 0);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.Invincible {
+    color: rgb(0, 64, 255);
+    background-color: rgb(255, 225, 0);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.Dimension20 {
+    color: white;
+    background-color: rgb(67, 0, 225);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.NotAnotherDnDPodcast {
+    color: rgb(227, 193, 0);
+    background-color: rgb(212, 0, 0);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.gallifrey {
+    color: rgb(255, 255, 255);
+    background-color: rgb(49, 74, 158);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
