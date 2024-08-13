@@ -4,25 +4,42 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Comment({ data }) {
 
+    const author = data.data.author;
+    const date = new Date(data.data.created * 1000);
+
     if (data.kind === 'more') {
         return;
     }
 
     if (data.data.replies !== '') {
         return (
-            <div className={styles.comment} >
+            <div>
+                <div className={styles.comment} >
 
-                <Vote data={data.data} kind={data.kind} />
+                    <div className={styles.commentContainer}>
 
-                <h1>{data.data.author}</h1>
-                <h2>Points: {data.data.score}</h2>
-                <h2>Time: {Date(data.data.created * 1000)}</h2>
-                <p>{data.data.body}</p>
+                        <Vote data={data.data} kind={data.kind} />
+
+                        <div className={styles.details}>
+                            <h1><a href={'https://old.reddit.com/u/' + author} target='_blank' rel="noreferrer">{author}</a></h1>
+                            <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
+
+                            <div className={styles.commentContent}>
+                                <p>{data.data.body}</p>
+                            </div>
+                        </div>
 
 
-                {Object.values(data.data.replies.data.children).map(child => <Comment data={child} key={uuidv4()} />)}
+                    </div>
 
+
+
+
+                    {Object.values(data.data.replies.data.children).map(child => <Comment data={child} key={uuidv4()} />)}
+
+                </div>
             </div>
+
         )
 
     }
@@ -30,13 +47,22 @@ export default function Comment({ data }) {
     return (
         <div className={styles.comment} >
 
-            <Vote data={data.data} kind={data.kind} />
+            <div className={styles.commentContainer}>
+
+                <Vote data={data.data} kind={data.kind} />
+
+                <div className={styles.details}>
+
+                    <h1><a href={'https://old.reddit.com/u/' + author} target='_blank' rel="noreferrer">{author}</a></h1>
+                    <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
+
+                    <div className={styles.commentContent}>
+                        <p>{data.data.body}</p>
+                    </div>
+                </div>
 
 
-            <h1>{data.data.author}</h1>
-            <h2>Points: {data.data.score}</h2>
-            <h2>Time: {Date(data.data.created * 1000)}</h2>
-            <p>{data.data.body}</p>
+            </div>
 
         </div>
     )
