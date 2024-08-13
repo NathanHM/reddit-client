@@ -10,6 +10,8 @@ import Gallery from './types/Gallery';
 import RichVideo from "./types/RichVideo.js";
 import Comment from '../comments/Comment.js';
 import Vote from "../vote/Vote.js";
+import loadingIcon from '../../imgs/spinner.png';
+import loadingStyles from './Loading.module.css';
 
 
 export default function Post() {
@@ -55,7 +57,11 @@ export default function Post() {
         return (
             <div className={styles.container}>
                 <div className={styles.dashboard}>
-                    <p>Loading...</p>
+
+                    <div className={loadingStyles.icon}>
+                        <img src={loadingIcon} alt="loading"></img>
+                    </div>
+
                 </div>
             </div>
         )

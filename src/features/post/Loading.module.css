@@ -1,0 +1,29 @@
+.icon {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon img {
+    height: 100px;
+    filter: invert(100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .icon img {
+        animation: icon-spin infinite 3s linear;
+    }
+}
+
+
+@keyframes icon-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -4,6 +4,8 @@ import styles from './Dashboard.module.css';
 import { useSelector, useDispatch } from "react-redux";
 import { addPost, selectPosts } from "./dashboardSlice";
 import { useEffect } from "react";
+import loadingIcon from '../../imgs/spinner.png';
+import loadingStyles from '../post/Loading.module.css';
 
 export default function Dashboard() {
 
@@ -87,7 +89,9 @@ export default function Dashboard() {
         return (
             <div className={styles.container}>
                 <div className={styles.dashboard}>
-                    <p className={styles.container}>Loading...</p>
+                <div className={loadingStyles.icon}>
+                            <img src={loadingIcon} alt="loading"></img>
+                        </div>
                 </div>
             </div>
         )
