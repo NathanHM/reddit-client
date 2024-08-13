@@ -7,7 +7,7 @@ import thumbnailDefault from '../../../imgs/text.png'
 import spoilerIcon from '../../../imgs/exclamation.png'
 import Vote from '../../vote/Vote.js';
 
-export default function PostPreview({ data }) {
+export default function PostPreview({ data, kind }) {
 
     const author = data.author;
     const title = data.title;
@@ -43,12 +43,10 @@ export default function PostPreview({ data }) {
         subreddit, id
     }
 
-    console.log(data)
-
     return (
         <div className={styles.post}>
 
-            <Vote data={data} />
+            <Vote data={data} kind={kind} />
 
             <div className={styles.thumbnail}>
                 <div className={styles.imgContainer}>

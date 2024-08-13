@@ -1,11 +1,10 @@
 import './App.css';
 import LogIn from '../features/logIn/LogIn';
 import { Outlet, useNavigate } from 'react-router';
-import { selectLoggedIn } from '../features/logIn/logInSlice';
-import { useSelector } from 'react-redux';
+import { selectLoggedIn, setId, setAuthCode, setLoggedIn } from '../features/logIn/logInSlice';
+import { useSelector} from 'react-redux';
 import { useDispatch } from "react-redux";
 import { clearPosts } from "../features/dashboard/dashboardSlice";
-import { setId, setAuthCode, setLoggedIn } from "../features/logIn/logInSlice";
 import homeIcon from '../imgs/home.png';
 import refreshIcon from '../imgs/refresh.png';
 import logOutIcon from '../imgs/exit.png';

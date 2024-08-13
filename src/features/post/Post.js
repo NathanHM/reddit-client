@@ -13,11 +13,11 @@ import Vote from "../vote/Vote.js";
 import loadingIcon from '../../imgs/spinner.png';
 import loadingStyles from './Loading.module.css';
 
-
 export default function Post() {
     const { subreddit, id } = useParams();
 
     const [post, setPost] = useState({});
+    const [kind, setKind] = useState('')
     const [comments, setComments] = useState({});
     const [type, setType] = useState(<></>);
 
@@ -29,6 +29,7 @@ export default function Post() {
             const json = await data.json();
 
             setPost(json['0'].data.children[0].data)
+            setKind(json['0'].data.children[0].kind)
             setComments(json['1'].data.children)
 
         }
@@ -73,7 +74,7 @@ export default function Post() {
                 <div className={styles.content}>
                     <div className={styles.titleContainer}>
 
-                        <Vote data={post} />
+                        <Vote data={post} kind={kind} />
 
                         <div className={styles.details}>
                             <h1>{post.title}</h1>

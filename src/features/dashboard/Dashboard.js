@@ -74,7 +74,7 @@ export default function Dashboard() {
 
         for (const post of posts) {
             if (!post.data.pinned) {
-                dispatch(addPost({ data: post.data, key: uuidv4() }))
+                dispatch(addPost({ data: post.data, kind:post.kind, key: uuidv4() }))
             }
         }
     }
@@ -101,7 +101,7 @@ export default function Dashboard() {
         <div className={styles.container}>
             <div className={styles.dashboard}>
                 <h1 className={styles.container}>Dashboard</h1>
-                {postPreviews.slice(0, 50).map(post => <PostPreview data={post.data} key={post.key} />)}
+                {postPreviews.slice(0, 50).map(post => <PostPreview data={post.data} kind={post.kind} key={post.key} />)}
             </div>
         </div>
     )
