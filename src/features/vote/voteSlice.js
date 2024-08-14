@@ -13,7 +13,6 @@ export const voteSlice = createSlice({
             state.votes = [];
         },
         upvote: (state, action) => {
-            console.log(action.payload)
             const { id, bool } = action.payload
             state.votes.find(el => el.id === id).upvoted = bool;
             state.votes.find(el => el.id === id).downvoted = false;
