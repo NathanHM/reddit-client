@@ -52,3 +52,6 @@ li button img {
   width: 40px;
   height: 40px;
 }
+ p a {
+  color: blue;
+ }

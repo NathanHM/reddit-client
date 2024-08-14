@@ -1,6 +1,7 @@
 import styles from './Coments.module.css';
 import Vote from '../vote/Vote';
 import { v4 as uuidv4 } from "uuid";
+import { formatCharacters, formatText } from '../../utilities';
 
 export default function Comment({ data }) {
 
@@ -25,7 +26,7 @@ export default function Comment({ data }) {
                             <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
 
                             <div className={styles.commentContent}>
-                                <p>{data.data.body}</p>
+                                <p>{formatText(formatCharacters(data.data.body))}</p>
                             </div>
 
                         </div>
@@ -52,7 +53,7 @@ export default function Comment({ data }) {
                     <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
 
                     <div className={styles.commentContent}>
-                        <p>{data.data.body}</p>
+                        <p>{formatText(formatCharacters(data.data.body))}</p>
                     </div>
 
                 </div>

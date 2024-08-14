@@ -1,5 +1,7 @@
+import { formatText, formatCharacters } from "../../../utilities"
+
 export default function Text({ data }) {
     return (
-        <p>{data.selftext}</p>
+        <p>{formatText(formatCharacters(data.selftext))}</p>
     )
 }
