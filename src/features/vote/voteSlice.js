@@ -13,12 +13,15 @@ export const voteSlice = createSlice({
             state.votes = [];
         },
         upvote: (state, action) => {
-            state.votes.find(el => el.id === action.payload).upvoted = true;
-            state.votes.find(el => el.id === action.payload).downvoted = false;
+            console.log(action.payload)
+            const { id, bool } = action.payload
+            state.votes.find(el => el.id === id).upvoted = bool;
+            state.votes.find(el => el.id === id).downvoted = false;
         },
         downvote: (state, action) => {
-            state.votes.find(el => el.id === action.payload).downvoted = true;
-            state.votes.find(el => el.id === action.payload).upvoted = false;
+            const { id, bool } = action.payload
+            state.votes.find(el => el.id === id).downvoted = bool;
+            state.votes.find(el => el.id === id).upvoted = false;
         }
     }
 })

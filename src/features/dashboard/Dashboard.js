@@ -43,11 +43,10 @@ export default function Dashboard() {
     }
 
     const getSubData = async (subreddit) => {
+
         const data = await fetch('https://www.reddit.com/r/' + subreddit + '.json');
         const dataJson = await data.json();
-        const about = await fetch('https://www.reddit.com/r/' + subreddit + '/about.json', {
-            method: 'GET'
-        });
+        const about = await fetch('https://www.reddit.com/r/' + subreddit + '/about.json');
         const aboutJson = await about.json();
 
         for (const child of dataJson.data.children) {

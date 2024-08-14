@@ -18,7 +18,7 @@ export default function LogIn() {
     }
     const clientId = 'WbPqcAo0wBovDfBrv2kS7Q';
     const uri = 'http://localhost:3000/callback';
-    const scope = 'identity edit save submit read history'
+    const scope = 'identity edit vote save submit read history'
     const endpoint = 'https://www.reddit.com/api/v1/authorize?'
 
     const parameters = queryString.stringify({

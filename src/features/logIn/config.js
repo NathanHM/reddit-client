@@ -1,0 +1,1 @@
+export const clientSecret = 'G6Rd-ByT7oe0xg7no5naX6wxupvprw'
