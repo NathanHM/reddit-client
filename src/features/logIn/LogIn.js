@@ -17,7 +17,7 @@ export default function LogIn() {
         state = id;
     }
     const clientId = 'WbPqcAo0wBovDfBrv2kS7Q';
-    const uri = 'http://localhost:3000/callback';
+    const uri = 'https://ssl-reddit-client.netlify.app/callback';
     const scope = 'identity edit vote save submit read history'
     const endpoint = 'https://www.reddit.com/api/v1/authorize?'
 

@@ -14,12 +14,11 @@ export default function Callback() {
 
     const clientId = 'WbPqcAo0wBovDfBrv2kS7Q'
 
-
     useEffect(() => {
 
         const getAuthCode = async () => {
             const endpoint = 'https://www.reddit.com/api/v1/access_token'
-            const uri = 'http://localhost:3000/callback';
+            const uri = 'https://ssl-reddit-client.netlify.app/callback';
 
             try {
                 const response = await fetch(endpoint, {
