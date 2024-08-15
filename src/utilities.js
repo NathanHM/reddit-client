@@ -1,4 +1,4 @@
-export const formatCharacters = text => {
+const formatCharacters = text => {
     if (!text) {
         return text;
     } else {
@@ -10,22 +10,46 @@ export const formatCharacters = text => {
     }
 }
 
-export const formatText = text => {
+const formatLinks = text => {
 
     if (!text) {
         return text;
     } else {
-        const regex = /\(([^)]+)\)\[([^\]]+)\]/g;
+        const styledLinkRegex = /\[([^)]+)\]\(([^\]]+)\)/g;
 
-        const formattedLink = text.replace(regex, (match, p1, p2) => {
-            return (<a href={p2}>{p1}</a>);
+        let formattedText = text.replace(styledLinkRegex, (match, p1, p2) => {
+            return `<a href="${p2}" target='_blank'>${p1}</a>`;
         });
 
-        return (
-            <>
-                {formattedLink}
-            </>
-        )
+        const urlRegex = /(?<!href=")(https?:\/\/[^\s]+)/g;
+
+        formattedText = formattedText.replace(urlRegex, (url) => {
+            return `<a href="${url}" target='_blank'>${url}</a>`;
+        });
+
+        console.log(formattedText);
+
+        return formatGifs(formattedText)
     }
 
 }
+
+const formatGifs = text => {
+    if (!text) {
+        return text;
+    } else {
+
+        const gifLinkRegex = /!<a href="giphy\|([^"]+)" target='_blank'>gif<\/a>/g;
+
+        const formattedText = text.replace(gifLinkRegex, (match, gifId) => {
+            const gifUrl = `https://media.giphy.com/media/${gifId}/giphy.gif`;
+            return `<img src="${gifUrl}" alt="GIF" />`;
+        });
+
+        return formattedText;
+    }
+}
+
+const format = text => formatGifs(formatLinks(formatCharacters(text)));
+
+export default format;

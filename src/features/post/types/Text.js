@@ -1,7 +1,7 @@
-import { formatText, formatCharacters } from "../../../utilities"
+import format from "../../../utilities"
 
 export default function Text({ data }) {
     return (
-        <p>{formatText(formatCharacters(data.selftext))}</p>
+        <div dangerouslySetInnerHTML={{ __html: format(data.selftext) }} />
     )
 }

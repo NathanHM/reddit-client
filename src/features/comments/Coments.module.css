@@ -40,10 +40,14 @@
     text-align: start;
 }
 
+.commentContent a {
+    color: rgb(125, 155, 254);
+}
+
 @media only screen and (max-width: 900px) {
 
-    .comment p {
-        font-size: 0.85rem;
+    .comment {
+        font-size: 0.9rem;
     }
 
     .commentContent {
@@ -54,5 +58,4 @@
     .details {
         padding-left: 0.5rem;
     }
-
 }

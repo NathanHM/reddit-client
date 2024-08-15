@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import thumbnailDefault from '../../../imgs/text.png'
 import spoilerIcon from '../../../imgs/exclamation.png'
 import Vote from '../../vote/Vote.js';
-import { formatCharacters } from '../../../utilities.js';
+import format from '../../../utilities.js';
 
 export default function PostPreview({ data, kind }) {
 
@@ -48,7 +48,7 @@ export default function PostPreview({ data, kind }) {
         <div className={styles.container}>
             <div className={styles.spaceBetween}>
                 <h4>{domain}</h4>
-                <h4 className={subStyles[subreddit]}>{subreddit} : {formatCharacters(flair)}</h4>
+                <h4 className={subStyles[subreddit]}>{subreddit} : {format(flair)}</h4>
             </div>
             <div className={styles.post}>
 
@@ -72,7 +72,7 @@ export default function PostPreview({ data, kind }) {
                             target='_blank'
                             className={styles.link}
                         >
-                            <h1>{formatCharacters(title)}</h1>
+                            <h1>{format(title)}</h1>
                         </Link>
                         :
                         <Link
@@ -81,7 +81,7 @@ export default function PostPreview({ data, kind }) {
                             data={postData}
                             className={styles.link}
                         >
-                            <h1>{formatCharacters(title)}</h1>
+                            <h1>{format(title)}</h1>
                         </Link>
                     }
 
