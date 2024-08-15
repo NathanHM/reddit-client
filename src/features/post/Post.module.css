@@ -71,7 +71,8 @@
 
 .videoContainer {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
     height: 0;
     width: 100%;
     overflow: hidden;
@@ -105,5 +106,24 @@ h3 {
         width: 90%;
         margin-top: 5rem;
     }
+
+    .details h1 {
+        font-size: 1.1rem;
+    }
+
+    .details h2,
+    h4 {
+        font-size: 0.9rem;
+    }
+
+    .postContent p {
+        font-size: 0.85rem;
+    }
+
+    .postContent {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    
 
 }
