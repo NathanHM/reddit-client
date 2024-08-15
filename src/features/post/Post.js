@@ -77,7 +77,13 @@ export default function Post() {
                         <Vote data={post} kind={kind} />
 
                         <div className={styles.details}>
-                            <h1>{post.title}</h1>
+                            <a href={'https://old.reddit.com' + post.permalink} target='_blank' rel="noreferrer">
+                                <div className={styles.iconContainer}>
+                                    <div className={styles.imgContainer}>
+                                        <h1>{post.title}</h1>
+                                    </div>
+                                </div>
+                            </a>
                             <div className={styles.section}>
                                 <h2><a href={'https://old.reddit.com/u/' + post.author} target='_blank' rel="noreferrer">{post.author}</a></h2>
                                 <h2>{new Date(post.created * 1000).toLocaleDateString('en-UK')} : {new Date(post.created * 1000).toLocaleTimeString('en-UK')} </h2>
@@ -85,6 +91,7 @@ export default function Post() {
                             <div className={styles.section}>
                                 <h3 className={subStyles[post.subreddit]}>{post.subreddit}</h3>
                                 <h3>{post.link_flair_text} </h3>
+
                             </div>
 
                         </div>
