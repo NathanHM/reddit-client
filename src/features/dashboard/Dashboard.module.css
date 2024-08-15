@@ -23,3 +23,12 @@
     margin-top: 8rem;
     margin-bottom: 2rem;
 }
+
+@media only screen and (max-width: 900px) {
+
+    .dashboard {
+        width: 90%;
+        margin-top: 5rem;
+    }
+
+}

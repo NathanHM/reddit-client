@@ -1,17 +1,15 @@
 .container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0px;
-}
-
-.post {
-    background-color: rgb(65, 65, 65);
-    display: flex;
     margin: 0rem 0.5rem;
     padding: 1rem 0.25rem;
     border-top: 1px solid rgb(111, 0, 190);
     border-bottom: 1px solid rgb(111, 0, 190);
+    background-color: rgb(65, 65, 65);
+    display: block;
+}
+
+.post {
+    display: flex;
+
 }
 
 .spaceBetween {
@@ -28,16 +26,16 @@
     padding: 2%;
 }
 
-.thumbnail .imgContainer {
+.imgContainer {
     width: 100%;
     height: auto;
 }
 
-.thumbnail .imgContainer img {
+.imgContainer img {
     width: 100%;
 }
 
-.thumbnail .imgContainer #icon {
+.imgContainer #icon {
     filter: invert(100%);
 }
 
@@ -58,65 +56,12 @@
     text-decoration: none;
 }
 
-.points {
-    width: 100%;
-    display: block;
-    margin: 0;
-    padding: 0;
-}
-
-.pointsContainer {
-    max-width: 50px;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-}
-
-.points button {
-    background-color: transparent;
-    max-width: 40px;
-    border-radius: 25px;
-    border: 0;
-    padding: 0;
-    margin: 0;
-}
-
-.points p {
-    max-width: 40px;
-}
-
-.points button:hover {
-    background-color: rgba(0, 0, 0, 0.15);
-}
-
-.points button:active {
-    box-shadow: 0 0 10px 5px rgb(255, 255, 255);
-    background-color: none;
-}
-
-.points button:disabled {
-    background-color: rgb(236, 126, 0);
-}
-
-.points img {
-    height: 40px;
-    filter: invert(100%);
-    width: 40px;
-    padding: 0;
-    margin: 0;
-}
-
-.points img:active {
-    filter: none;
-}
-
 h1 {
     font-size: 1.4rem;
 }
 
-h2, p {
+h2,
+p {
     font-size: 1rem;
     margin: none;
     padding: none;
@@ -129,8 +74,8 @@ h4 {
     padding-left: 0.4rem;
 }
 
-.bar img {
-    height: 25px;
+.iconContainer {
+    width: 25px;
     filter: invert(100%);
 }
 
@@ -148,4 +93,31 @@ h4 {
 a {
     text-decoration: none;
     color: white;
+}
+
+@media only screen and (max-width: 900px) {
+
+    h1 {
+        font-size: 1rem;
+    }
+
+    h2,
+    p {
+        font-size: 0.7rem;
+    }
+
+    h4 {
+        font-size: 0.7rem;
+        padding-left: 0.4rem;
+    }
+
+
+    .thumbnail {
+        width: 10%;
+        min-width: 50px;
+    }
+
+    .iconContainer {
+        width: 15px;
+    }
 }

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import thumbnailDefault from '../../../imgs/text.png'
 import spoilerIcon from '../../../imgs/exclamation.png'
 import Vote from '../../vote/Vote.js';
+import { formatCharacters } from '../../../utilities.js';
 
 export default function PostPreview({ data, kind }) {
 
@@ -44,77 +45,94 @@ export default function PostPreview({ data, kind }) {
     }
 
     return (
-        <div className={styles.post}>
-
-            <Vote data={data} kind={kind} />
-
-            <div className={styles.thumbnail}>
-                <div className={styles.imgContainer}>
-                    {thumbnail}
-                </div>
+        <div className={styles.container}>
+            <div className={styles.spaceBetween}>
+                <h4>{domain}</h4>
+                <h4 className={subStyles[subreddit]}>{subreddit} : {formatCharacters(flair)}</h4>
             </div>
+            <div className={styles.post}>
 
+                <Vote data={data} kind={kind} />
 
-            <div className={styles.details} >
-                <div className={styles.spaceBetween}>
-                    <h4>{domain}</h4>
-                    <h4 className={subStyles[subreddit]}>{subreddit} : {flair}</h4>
+                <div className={styles.thumbnail}>
+                    <div className={styles.imgContainer}>
+                        {thumbnail}
+                    </div>
                 </div>
 
 
-                {link ?
-                    <Link
-                        key={id}
-                        to={data.url}
-                        target='_blank'
-                        className={styles.link}
-                    >
-                        <h1>{title}</h1>
-                    </Link>
-                    :
+                <div className={styles.details} >
+
+
+
+                    {link ?
+                        <Link
+                            key={id}
+                            to={data.url}
+                            target='_blank'
+                            className={styles.link}
+                        >
+                            <h1>{formatCharacters(title)}</h1>
+                        </Link>
+                        :
+                        <Link
+                            key={id}
+                            to={`/${subreddit}/${id}`}
+                            data={postData}
+                            className={styles.link}
+                        >
+                            <h1>{formatCharacters(title)}</h1>
+                        </Link>
+                    }
+
+
+                    <div className={styles.section} >
+                        <h2><a href={'https://old.reddit.com/u/' + author} target='_blank' rel="noreferrer">{author}</a></h2>
+                        <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
+                    </div>
+                    <div className={styles.section} >
+
+                    </div>
+
+
+
+                </div>
+            </div >
+            <div className={styles.bar} >
+                <div className={styles.commentsSection}>
                     <Link
                         key={id}
                         to={`/${subreddit}/${id}`}
                         data={postData}
                         className={styles.link}
                     >
-                        <h1>{title}</h1>
-                    </Link>
-                }
-
-
-                <div className={styles.section} >
-                <h2><a href={'https://old.reddit.com/u/' + author} target='_blank' rel="noreferrer">{author}</a></h2>
-                    <h2>{date.toLocaleDateString('en-UK')} : {date.toLocaleTimeString('en-UK')} </h2>
-                </div>
-                <div className={styles.section} >
-                    <div className={styles.bar} >
-                        <div className={styles.commentsSection}>
-                            <Link
-                                key={id}
-                                to={`/${subreddit}/${id}`}
-                                data={postData}
-                                className={styles.link}
-                            >
-                                <div className={styles.section} >
+                        <div className={styles.section} >
+                            <div className={styles.iconContainer}>
+                                <div className={styles.imgContainer}>
                                     <img src={commentIcon} alt='comment' />
-                                    <h4>
-                                        {num_comments}
-                                    </h4>
                                 </div>
 
-                            </Link>
-
+                            </div>
+                            <h4>
+                                {num_comments}
+                            </h4>
                         </div>
 
-                        <a href={'https://old.reddit.com' + permalink} target='_blank' rel="noreferrer"> <img src={permalinkIcon} alt='permalink' /> </a>
+                    </Link>
 
-                    </div>
                 </div>
 
+                <a href={'https://old.reddit.com' + permalink} target='_blank' rel="noreferrer">
+                    <div className={styles.iconContainer}>
+                        <div className={styles.imgContainer}>
+                            <img src={permalinkIcon} alt='permalink' />
+                        </div>
+                    </div>
+                </a>
 
             </div>
-        </div >
+        </div>
+
     )
 
 }

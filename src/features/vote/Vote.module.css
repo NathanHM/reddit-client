@@ -63,3 +63,26 @@ p {
     margin: none;
     padding: none;
 }
+
+@media only screen and (max-width: 900px) {
+
+    .points img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .points button {
+        max-width: 25px;
+        max-height: 25px;
+        border-radius: 25px;
+    }
+
+    .pointsContainer {
+        max-width: 30px;
+    }
+
+    p {
+        font-size: 0.7rem;
+        margin: 0.25rem 0;
+    }
+}

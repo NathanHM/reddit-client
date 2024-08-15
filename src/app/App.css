@@ -52,6 +52,16 @@ li button img {
   width: 40px;
   height: 40px;
 }
- p a {
-  color: blue;
- }
+
+@media only screen and (max-width: 900px) {
+
+  li button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  nav {
+    min-height: 60px;
+  }
+
+}
