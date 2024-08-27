@@ -8,6 +8,7 @@ import { clearPosts } from "../features/dashboard/dashboardSlice";
 import homeIcon from '../imgs/home.png';
 import refreshIcon from '../imgs/refresh.png';
 import logOutIcon from '../imgs/exit.png';
+import { useEffect } from 'react';
 
 function Root() {
 
@@ -30,6 +31,12 @@ function Root() {
   const home = () => {
     navigate('/dashboard')
   }
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/dashboard');
+    }
+  }, [loggedIn, navigate])
 
 
   return (
